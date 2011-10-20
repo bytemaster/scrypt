@@ -19,73 +19,73 @@ At the moment this library implements the following:
 
 ### RSA Basic Usage ### 
 
-  using namespace scrypt;
+      using namespace scrypt;
 
-  // rsa 2048 (default)
-  public_key_t  pub;
-  private_key_t priv;
+      // rsa 2048 (default)
+      public_key_t  pub;
+      private_key_t priv;
 
-  generate_keys( pub, priv );
+      generate_keys( pub, priv );
 
-  std::vector<char> in;
-  std::vector<char> out;
+      std::vector<char> in;
+      std::vector<char> out;
 
-  pub.encrypt(in,out);
-  priv.decrypt(out,in);
+      pub.encrypt(in,out);
+      priv.decrypt(out,in);
 
-  signature_t sig;
-  priv.sign( sha1_hash(in), sig );
-  pub.verify( sha1_hash(in), sig );
+      signature_t sig;
+      priv.sign( sha1_hash(in), sig );
+      pub.verify( sha1_hash(in), sig );
 
-  // rsa 1024 bit
-  public_key<1024>    pub1024;
-  private_key<1024>   priv1024;
-  signature_key<1024> sig1024;
+      // rsa 1024 bit
+      public_key<1024>    pub1024;
+      private_key<1024>   priv1024;
+      signature_key<1024> sig1024;
 
-  generate_keys( pub1024, priv1024 );
+      generate_keys( pub1024, priv1024 );
 
 ### Blowfish Basic Usage ###
 
-  using namesapce scrypt;
+      using namesapce scrypt;
 
-  blowfish bf;
-  bf.start( "Some Key", strlen("Some Key") );
+      blowfish bf;
+      bf.start( "Some Key", strlen("Some Key") );
 
-  // must be a multiple of 8 bytes
-  char in_out[8*rand()];
+      // must be a multiple of 8 bytes
+      char in_out[8*rand()];
 
-  bf.encrypt( in_out, sizeof(in_out) );
-  bf.reset_chain();
-  bf.decrypt( in_out, sizeof(in_out) );
+      bf.encrypt( in_out, sizeof(in_out) );
+      bf.reset_chain();
+      bf.decrypt( in_out, sizeof(in_out) );
 
 
 ### Diffie-Hellman Usage ###
 
-  diffie_hellman dh;
-  // Public Parameters, do this one and save
-  // both machines need this data.
-  dh.generate_params( 1024/*prime length*/, 5 );
-  
-  // Machine A
-  diffie_hellman dha;
-  dha.p = dh.p;
-  dha.g = dh.g;
+      diffie_hellman dh;
+      // Public Parameters, do this one and save
+      // both machines need this data.
+      dh.generate_params( 1024/*prime length*/, 5 );
+      
+      // Machine A
+      diffie_hellman dha;
+      dha.p = dh.p;
+      dha.g = dh.g;
 
-  dha.generate_pub_key();
-  // send dh.pub_key to machine B
+      dha.generate_pub_key();
+      // send dh.pub_key to machine B
 
-  dha.compute_shared_key( dhb.pub_key );
-  blowfish bf( &dha.shared_key.front(), dha.shared_key.size() );
+      dha.compute_shared_key( dhb.pub_key );
+      blowfish bf( &dha.shared_key.front(), dha.shared_key.size() );
 
-  // Machine B
-  dhb.p = dh.p;
-  dhb.g = dh.g;
+      // Machine B
+      dhb.p = dh.p;
+      dhb.g = dh.g;
 
-  dhb.generate_pub_key();
-  // send dh.pub_key to machine A
+      dhb.generate_pub_key();
+      // send dh.pub_key to machine A
 
-  dhb.compute_shared_key( dha.pub_key );
-  blowfish bf( &dhb.shared_key.front(), dhb.shared_key.size() );
+      dhb.compute_shared_key( dha.pub_key );
+      blowfish bf( &dhb.shared_key.front(), dhb.shared_key.size() );
 
 
 ### License ###
