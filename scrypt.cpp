@@ -35,6 +35,10 @@ namespace scrypt {
     bool sign_data( const std::vector<char>& key, uint32_t key_size, uint32_t pe, const sha1& digest, char* sig )
     {
         RSA* priv = get_priv( key,key_size,pe);
+        if( !priv ) {
+            error::generic g(scrypt::error::generic("Error loading private key:  " +  std::string(ERR_error_string( ERR_get_error(),NULL))) );
+		        BOOST_THROW_EXCEPTION(g);
+        }
         uint32_t slen = 0;
         if( 1 != RSA_sign( NID_sha1, (uint8_t*)digest.hash, sizeof(digest.hash), (unsigned char*)sig, &slen, priv ) )
         {
