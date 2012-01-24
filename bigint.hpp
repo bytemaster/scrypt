@@ -84,7 +84,7 @@ namespace scrypt
             }
 
             friend inline std::ostream& operator << ( std::ostream& os, const scrypt::bigint& bi ) {
-                return os << BN_bn2dec(n);
+                return os << BN_bn2dec(bi.n);
                 /*
                 std::vector<unsigned char> tmp(BN_num_bytes( bi.n) );
                 if( tmp.size() )
