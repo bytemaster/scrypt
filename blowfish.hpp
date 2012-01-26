@@ -122,6 +122,7 @@ E73214A2822139CA62B343CC5B65587310DD908D0C241B2263C2CF80DA
 
 #ifndef __SCRYPT_BLOWFISH_HPP__
 #define __SCRYPT_BLOWFISH_HPP__
+#include <stdint.h>
 
 namespace scrypt {
 
@@ -143,18 +144,18 @@ public:
 
 	//Constructor - Initialize the P and S boxes for a given Key
 	blowfish();
-	void start(unsigned char* ucKey, size_t n, const sblock& roChain = sblock(0UL,0UL));
+	void start(unsigned char* ucKey, uint64_t n, const sblock& roChain = sblock(0UL,0UL));
 
 	//Resetting the chaining block
 	void reset_chain() { m_oChain = m_oChain0; }
 
 	// encrypt/decrypt Buffer in Place
-	void encrypt(unsigned char* buf, size_t n, int iMode=ECB);
-	void decrypt(unsigned char* buf, size_t n, int iMode=ECB);
+	void encrypt(unsigned char* buf, uint64_t n, int iMode=ECB);
+	void decrypt(unsigned char* buf, uint64_t n, int iMode=ECB);
 
 	// encrypt/decrypt from Input Buffer to Output Buffer
-	void encrypt(const unsigned char* in, unsigned char* out, size_t n, int iMode=ECB);
-	void decrypt(const unsigned char* in, unsigned char* out, size_t n, int iMode=ECB);
+	void encrypt(const unsigned char* in, unsigned char* out, uint64_t n, int iMode=ECB);
+	void decrypt(const unsigned char* in, unsigned char* out, uint64_t n, int iMode=ECB);
 
 //Private Functions
 private:

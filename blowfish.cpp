@@ -293,7 +293,7 @@ const unsigned int blowfish::scm_auiInitS[4][256] = {
 blowfish::blowfish()
 {}
 
-void blowfish::start(unsigned char* ucKey, size_t keysize, const sblock& roChain)
+void blowfish::start(unsigned char* ucKey, uint64_t keysize, const sblock& roChain)
 {
     m_oChain0 = roChain;
     m_oChain  = roChain;
@@ -437,7 +437,7 @@ inline void BlockToBytes(sblock const& b, unsigned char* p)
 
 //encrypt Buffer in Place
 //Returns false if n is multiple of 8
-void blowfish::encrypt(unsigned char* buf, size_t n, int iMode)
+void blowfish::encrypt(unsigned char* buf, uint64_t n, int iMode)
 {
 	//Check the buffer's length - should be > 0 and multiple of 8
 	if((n==0)||(n%8!=0))
@@ -480,7 +480,7 @@ void blowfish::encrypt(unsigned char* buf, size_t n, int iMode)
 
 //decrypt Buffer in Place
 //Returns false if n is multiple of 8
-void blowfish::decrypt(unsigned char* buf, size_t n, int iMode)
+void blowfish::decrypt(unsigned char* buf, uint64_t n, int iMode)
 {
 	//Check the buffer's length - should be > 0 and multiple of 8
 	if((n==0)||(n%8!=0))
@@ -525,7 +525,7 @@ void blowfish::decrypt(unsigned char* buf, size_t n, int iMode)
 
 //encrypt from Input Buffer to Output Buffer
 //Returns false if n is multiple of 8
-void blowfish::encrypt(const unsigned char* in, unsigned char* out, size_t n, int iMode)
+void blowfish::encrypt(const unsigned char* in, unsigned char* out, uint64_t n, int iMode)
 {
 	//Check the buffer's length - should be > 0 and multiple of 8
 	if((n==0)||(n%8!=0))
@@ -568,7 +568,7 @@ void blowfish::encrypt(const unsigned char* in, unsigned char* out, size_t n, in
 
 //decrypt from Input Buffer to Output Buffer
 //Returns false if n is multiple of 8
-void blowfish::decrypt(const unsigned char* in, unsigned char* out, size_t n, int iMode)
+void blowfish::decrypt(const unsigned char* in, unsigned char* out, uint64_t n, int iMode)
 {
 	//Check the buffer's length - should be > 0 and multiple of 8
 	if((n==0)||(n%8!=0))

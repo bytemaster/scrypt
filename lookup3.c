@@ -987,7 +987,7 @@ void driver5()
   printf("hash is %.8lx\n", c);   /* cd628161 */
 }
 
-
+#if 0
 int main()
 {
   driver1();   /* test that the key is hashed: used for timings */
@@ -997,5 +997,6 @@ int main()
   driver5();   /* test the hash against known vectors */
   return 1;
 }
+#endif
 
 #endif  /* SELF_TEST */

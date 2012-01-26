@@ -23,6 +23,12 @@ namespace scrypt {
           ds.read(sig.data, KS/8 );
           return ds;
       }
+      bool operator != ( const signature& s )const {
+        return memcmp( s.data, data, sizeof(data) ) != 0;
+      }
+      bool operator == ( const signature& s )const {
+        return memcmp( s.data, data, sizeof(data) ) == 0;
+      }
   };
 
   bool verify_data( const char* key, uint32_t key_size, uint32_t pe, const sha1& hc, const char* sig ); 
