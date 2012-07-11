@@ -180,11 +180,21 @@ class sha1_encoder {
     private:
         SHA_CTX ctx;
 };
+inline sha1 sha1_hash( const std::string& str ) {
+    return sha1_encoder::hash(str);
+}
 
 inline void sha1_hash( scrypt::sha1& hc, const char* d, uint32_t s ) {
     sha1_encoder enc; 
     enc.write( d, s );
     enc.result((unsigned char*)hc.hash);
+}
+inline scrypt::sha1 sha1_hash( const char* d, uint32_t s ) {
+    scrypt::sha1 hc;
+    sha1_encoder enc; 
+    enc.write( d, s );
+    enc.result((unsigned char*)hc.hash);
+    return hc;
 }
 
 } // namespace scrypt
