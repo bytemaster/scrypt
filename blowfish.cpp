@@ -314,13 +314,13 @@ void blowfish::start(unsigned char* ucKey, uint64_t keysize, const sblock& roCha
 	const unsigned char* p = aucLocalKey;
 	unsigned int x=0;
 	//Repeatedly cycle through the key bits until the entire P array has been XORed with key bits
-	int iCount = 0;
+	uint32_t iCount = 0;
 	for(i=0; i<18; i++)
 	{
 		x=0;
 		for(int n=4; n--; )
 		{
-			int iVal = (int)(*p);
+			//int iVal = (int)(*p);
 			x <<= 8;
 			x |= *(p++);
 			iCount++;

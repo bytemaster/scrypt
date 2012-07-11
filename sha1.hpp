@@ -145,7 +145,7 @@ class sha1_encoder {
          *  Returns the message digest
          */
         bool result(unsigned char*message_digest_array) {
-            SHA1_Final(message_digest_array, &ctx );
+           return 1 == SHA1_Final(message_digest_array, &ctx );
         }
         sha1 result() {
             sha1 h;
