@@ -7,8 +7,8 @@
 
 #include <cstring>
 #include <boost/exception/all.hpp>
-#include "blowfish.hpp"
-#include "error.hpp"
+#include <scrypt/blowfish.hpp>
+#include <scrypt/error.hpp>
 
 namespace scrypt {
 

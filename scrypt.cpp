@@ -1,7 +1,7 @@
-#include "scrypt.hpp"
+#include <scrypt/scrypt.hpp>
 #include <scrypt/error.hpp>
 #include <iostream>
-#include "sha1.hpp"
+#include <scrypt/sha1.hpp>
 #include <openssl/rsa.h>
 #include <openssl/rand.h>
 #include <openssl/sha.h>
