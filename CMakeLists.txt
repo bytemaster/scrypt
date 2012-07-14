@@ -27,4 +27,4 @@ SETUP_LIBRARY( scrypt  SOURCES   ${sources}
                        LIBRARIES ${libraries} 
                        AUTO_INSTALL_HEADERS 
                        LIBRARY_TYPE ${LIBRARY_BUILD_TYPE} )
-install( DIRECTORY include/scrypt DESTINATION include/scrypt )
+install( DIRECTORY include/scrypt DESTINATION include )
