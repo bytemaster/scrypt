@@ -8,7 +8,6 @@ SET( sources
     blowfish.cpp
     scrypt.cpp
     dh.cpp
-    lookup3.c
    )
 
 SET( libraries 
